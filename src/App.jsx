@@ -1,5 +1,5 @@
-import Header from "./components/header.components";
-import Main from "./components/main.components";
+import Header from "./components/header/header.component";
+import Main from "./components/main/main.component";
 
 function App() {
   return (

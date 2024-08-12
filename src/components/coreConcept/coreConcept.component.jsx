@@ -1,3 +1,5 @@
+import "./coreConcept.component.css";
+
 function CoreConcept({ image, title, description }) {
   return (
     <li>
