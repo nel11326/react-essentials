@@ -1,12 +1,15 @@
+import { useState } from "react";
+
 import CoreConcept from "../coreConcept/coreConcept.component.jsx";
-import { CORE_CONCEPTS } from "../../data.js";
+import { CORE_CONCEPTS, EXAMPLES } from "../../data.js";
 import TabButton from "../TabButton/tabButton.component.jsx";
 import "./main.component.css";
 
 function Main() {
-  let tabContent = "Please Click a Button";
+  const [selectedTopic, setSelectedTopic] = useState("components");
+
   function handleSelect(selectedButton) {
-    tabContent = selectedButton;
+    setSelectedTopic(selectedButton);
   }
 
   return (
@@ -28,14 +31,20 @@ function Main() {
         <h2>Examples</h2>
         <menu>
           <TabButton
-            onSelect={() => handleSelect("Components")}
+            onSelect={() => handleSelect("components")}
             children="Components"
           />
-          <TabButton onSelect={() => handleSelect("JSX")} children="JSX" />
-          <TabButton onSelect={() => handleSelect("Props")} children="Props" />
-          <TabButton onSelect={() => handleSelect("State")} children="State" />
+          <TabButton onSelect={() => handleSelect("jsx")} children="JSX" />
+          <TabButton onSelect={() => handleSelect("props")} children="Props" />
+          <TabButton onSelect={() => handleSelect("state")} children="State" />
         </menu>
-        {tabContent}
+        <div id="tab-content">
+          <h3>{EXAMPLES[selectedTopic].title[0]}</h3>
+          <p>{EXAMPLES[selectedTopic].description}</p>
+          <pre>
+            <code>{EXAMPLES[selectedTopic].code}</code>
+          </pre>
+        </div>
       </section>
     </main>
   );
